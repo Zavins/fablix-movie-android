@@ -1,4 +1,4 @@
-package edu.uci.ics.fabflixmobile;
+package edu.uci.ics.fabflixmobile.data;
 
 import java.security.SecureRandom;
 import java.security.cert.X509Certificate;

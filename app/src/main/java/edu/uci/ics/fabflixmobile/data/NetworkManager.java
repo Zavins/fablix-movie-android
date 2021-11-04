@@ -1,10 +1,7 @@
-package edu.uci.ics.fabflixmobile;
-
+package edu.uci.ics.fabflixmobile.data;
 import android.content.Context;
-
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
-
 import java.net.CookieHandler;
 import java.net.CookieManager;
 

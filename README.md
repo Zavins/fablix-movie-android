@@ -10,9 +10,9 @@ This is an example Android project to demonstrate how to:
 
 ## Running this project
 
-This Android app depends on [cs122b-fall21-project2-login-cart-example](https://github.com/UCI-Chenli-teaching/cs122b-fall21-project2-login-cart-example) as the backend server to work.
+This Android app depends on [cs122b-spring21-project2-login-cart-example](https://github.com/UCI-Chenli-teaching/cs122b-spring21-project2-login-cart-example) as the backend server to work.
 
-Note: You need to make sure your login cart runs at localhost:8080/cs122b-fall21-project2-login-cart-example(dashes instead of underscores!). 
+Note: You need to make sure your login cart runs at localhost:8080/cs122b-spring21-project2-login-cart-example(dashes instead of underscores!). 
 
 You can change the url on Intellij IDEA -> Edit Run/Debug Configurations for Tomcat -> Deployment.
 
@@ -24,4 +24,4 @@ Note: Don't forget to change the URL in Login class to match your deployed backe
 
 ## About NukeSSLCerts.java
 
-When you access a website through https, the server will send an SSL certificate to the browser for it to verify. We are using self-signed certificates, which will not be trusted by Android applications by default. The application will throw exceptions once it receives such certificate. NukeSSLCerts.java allows us to bypass SSL by accepting all certificates. If you want to learn more about this, see [this blog](https://www.codeproject.com/Articles/826045/Android-security-Implementation-of-Self-signed-SSL)
+When you access a website through https, the server will send a SSL certificate to the browser for it to verify. We are using self-signed certificates, which will not be trusted by Android applications by default. The application will throw exceptions once it receives such certificate. NukeSSLCerts.java allows us to bypass SSL by accepting all certificates. If you want to learn more about this, see [this blog](https://www.codeproject.com/Articles/826045/Android-security-Implementation-of-Self-signed-SSL)

@@ -1,32 +1,37 @@
 package edu.uci.ics.fabflixmobile.ui.login;
-
-import android.app.Activity;
+import android.annotation.SuppressLint;
 import android.content.Intent;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
+import android.util.Log;
 import android.os.Bundle;
-import androidx.annotation.Nullable;
-import androidx.annotation.StringRes;
+import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.view.KeyEvent;
-import android.view.View;
-import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
-
-
-import edu.uci.ics.fabflixmobile.R;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.StringRequest;
+import edu.uci.ics.fabflixmobile.data.NetworkManager;
 import edu.uci.ics.fabflixmobile.databinding.ActivityLoginBinding;
 import edu.uci.ics.fabflixmobile.ui.movielist.MovieListActivity;
+import java.util.HashMap;
+import java.util.Map;
 
 public class LoginActivity extends AppCompatActivity {
 
-    private LoginViewModel loginViewModel;
+    private EditText username;
+    private EditText password;
+    private TextView message;
+
+    /*
+      In Android, localhost is the address of the device or the emulator.
+      To connect to your machine, you need to use the below IP address
+     */
+    private final String host = "10.0.2.2";
+    private final String port = "8080";
+    private final String domain = "cs122b-spring21-project2-login-cart-example";
+    private final String baseURL = "http://" + host + ":" + port + "/" + domain;
+
     private ActivityLoginBinding binding;
 
     @Override
@@ -34,103 +39,52 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         binding = ActivityLoginBinding.inflate(getLayoutInflater());
+        // upon creation, inflate and initialize the layout
         setContentView(binding.getRoot());
 
-        loginViewModel = new ViewModelProvider(this, new LoginViewModelFactory())
-                .get(LoginViewModel.class);
-
-        final EditText usernameEditText = binding.username;
-        final EditText passwordEditText = binding.password;
+        username = binding.username;
+        password = binding.password;
+        message = binding.message;
         final Button loginButton = binding.login;
-        final ProgressBar loadingProgressBar = binding.loading;
 
-        loginViewModel.getLoginFormState().observe(this, new Observer<LoginFormState>() {
+        //assign a listener to call a function to handle the user request when clicking a button
+        loginButton.setOnClickListener(view -> login());
+    }
+
+    @SuppressLint("SetTextI18n")
+    public void login() {
+        message.setText("Trying to login");
+        // use the same network queue across our application
+        final RequestQueue queue = NetworkManager.sharedManager(this).queue;
+        // request type is POST
+        final StringRequest loginRequest = new StringRequest(
+                Request.Method.POST,
+                baseURL + "/api/login",
+                response -> {
+                    // TODO: should parse the json response to redirect to appropriate functions
+                    //  upon different response value.
+                    Log.d("login.success", response);
+                    //Complete and destroy login activity once successful
+                    finish();
+                    // initialize the activity(page)/destination
+                    Intent MovieListPage = new Intent(LoginActivity.this, MovieListActivity.class);
+                    // activate the list page.
+                    startActivity(MovieListPage);
+                },
+                error -> {
+                    // error
+                    Log.d("login.error", error.toString());
+                }) {
             @Override
-            public void onChanged(@Nullable LoginFormState loginFormState) {
-                if (loginFormState == null) {
-                    return;
-                }
-                loginButton.setEnabled(loginFormState.isDataValid());
-                if (loginFormState.getUsernameError() != null) {
-                    usernameEditText.setError(getString(loginFormState.getUsernameError()));
-                }
-                if (loginFormState.getPasswordError() != null) {
-                    passwordEditText.setError(getString(loginFormState.getPasswordError()));
-                }
-            }
-        });
-
-        loginViewModel.getLoginResult().observe(this, new Observer<LoginResult>() {
-            @Override
-            public void onChanged(@Nullable LoginResult loginResult) {
-                if (loginResult == null) {
-                    return;
-                }
-                loadingProgressBar.setVisibility(View.GONE);
-                if (loginResult.getError() != null) {
-                    showLoginFailed(loginResult.getError());
-                }
-                if (loginResult.getSuccess() != null) {
-                    updateUiWithUser(loginResult.getSuccess());
-                }
-                setResult(Activity.RESULT_OK);
-
-                //Complete and destroy login activity once successful
-                finish();
-                Intent MovieListPage = new Intent(LoginActivity.this, MovieListActivity.class);
-                // activate the list page.
-                startActivity(MovieListPage);
-            }
-        });
-
-        TextWatcher afterTextChangedListener = new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                // ignore
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                // ignore
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                loginViewModel.loginDataChanged(usernameEditText.getText().toString(),
-                        passwordEditText.getText().toString());
+            protected Map<String, String> getParams() {
+                // POST request form data
+                final Map<String, String> params = new HashMap<>();
+                params.put("username", username.getText().toString());
+                params.put("password", password.getText().toString());
+                return params;
             }
         };
-        usernameEditText.addTextChangedListener(afterTextChangedListener);
-        passwordEditText.addTextChangedListener(afterTextChangedListener);
-        passwordEditText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-
-            @Override
-            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                if (actionId == EditorInfo.IME_ACTION_DONE) {
-                    loginViewModel.login(usernameEditText.getText().toString(),
-                            passwordEditText.getText().toString(),getApplicationContext());
-                }
-                return false;
-            }
-        });
-
-        loginButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                loadingProgressBar.setVisibility(View.VISIBLE);
-                loginViewModel.login(usernameEditText.getText().toString(),
-                        passwordEditText.getText().toString(),getApplicationContext());
-            }
-        });
-    }
-
-    private void updateUiWithUser(LoggedInUserView model) {
-        String welcome = getString(R.string.welcome) + model.getDisplayName();
-        // TODO : initiate successful logged in experience
-        Toast.makeText(getApplicationContext(), welcome, Toast.LENGTH_LONG).show();
-    }
-
-    private void showLoginFailed(@StringRes Integer errorString) {
-        Toast.makeText(getApplicationContext(), errorString, Toast.LENGTH_SHORT).show();
+        // important: queue.add is where the login request is actually sent
+        queue.add(loginRequest);
     }
 }

@@ -18,7 +18,7 @@ You can change the url on Intellij IDEA -> Edit Run/Debug Configurations for Tom
 
 ![20210510104246](https://user-images.githubusercontent.com/13672781/117701798-81ff8600-b17c-11eb-91e3-76eff6d05831.png)
 
-Follow the instructions on [Canvas](https://canvas.eee.uci.edu/courses/36596/pages/p4-task-2-developing-an-android-app-for-fabflix) to set up the Android App Project
+Follow the instructions on [Canvas](https://canvas.eee.uci.edu/courses/40150/pages/p4-task-2-developing-an-android-app-for-fabflix) to set up the Android App Project
 
 Note: Don't forget to change the URL in Login class to match your deployed backend
 

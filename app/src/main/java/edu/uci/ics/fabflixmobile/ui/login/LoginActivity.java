@@ -1,19 +1,25 @@
 package edu.uci.ics.fabflixmobile.ui.login;
+
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.util.Log;
 import android.os.Bundle;
 import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
+
 import edu.uci.ics.fabflixmobile.data.NetworkManager;
 import edu.uci.ics.fabflixmobile.databinding.ActivityLoginBinding;
 import edu.uci.ics.fabflixmobile.ui.movielist.MovieListActivity;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -29,16 +35,14 @@ public class LoginActivity extends AppCompatActivity {
      */
     private final String host = "10.0.2.2";
     private final String port = "8080";
-    private final String domain = "cs122b-spring21-project2-login-cart-example";
+    private final String domain = "cs122b-fall21-project2-login-cart-example";
     private final String baseURL = "http://" + host + ":" + port + "/" + domain;
-
-    private ActivityLoginBinding binding;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        binding = ActivityLoginBinding.inflate(getLayoutInflater());
+        ActivityLoginBinding binding = ActivityLoginBinding.inflate(getLayoutInflater());
         // upon creation, inflate and initialize the layout
         setContentView(binding.getRoot());
 

@@ -1,6 +1,8 @@
 package edu.uci.ics.fabflixmobile.ui.movielist;
+
 import edu.uci.ics.fabflixmobile.R;
 import edu.uci.ics.fabflixmobile.data.model.Movie;
+
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -8,10 +10,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
+
 import java.util.ArrayList;
 
 public class MovieListViewAdapter extends ArrayAdapter<Movie> {
     private final ArrayList<Movie> movies;
+
     // View lookup cache
     private static class ViewHolder {
         TextView title;

@@ -3,8 +3,11 @@ package edu.uci.ics.fabflixmobile.ui.movielist;
 import android.annotation.SuppressLint;
 import android.widget.ListView;
 import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.os.Bundle;
+
 import edu.uci.ics.fabflixmobile.R;
 import edu.uci.ics.fabflixmobile.data.model.Movie;
 

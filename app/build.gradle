@@ -1,16 +1,16 @@
 plugins {
     id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
 }
 
 android {
-    compileSdkVersion 30
-    buildToolsVersion "30.0.3"
+    namespace 'edu.uci.ics.fabflixmobile'
+    compileSdk 33
 
     defaultConfig {
         applicationId "edu.uci.ics.fabflixmobile"
-        minSdkVersion 24
-        //noinspection OldTargetApi
-        targetSdkVersion 30
+        minSdkVersion 33
+        targetSdkVersion 33
         versionCode 1
         versionName "1.0"
 
@@ -20,7 +20,6 @@ android {
     buildTypes {
         release {
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
     compileOptions {
@@ -30,6 +29,7 @@ android {
     buildFeatures {
         viewBinding true
     }
+
 }
 
 dependencies {
@@ -37,4 +37,5 @@ dependencies {
     implementation 'com.google.android.material:material:1.4.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.1'
     implementation 'com.android.volley:volley:1.2.1'
+
 }

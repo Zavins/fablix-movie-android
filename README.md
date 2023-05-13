@@ -12,13 +12,7 @@ This is an example Android project to demonstrate how to:
 
 This Android app depends on [cs122b-project2-login-cart-example](https://github.com/UCI-Chenli-teaching/cs122b-project2-login-cart-example) as the backend server to work.
 
-Note: You need to make sure your login cart runs at localhost:8080/cs122b-project2-login-cart-example(dashes instead of underscores!). 
-
-You can change the url on Intellij IDEA -> Edit Run/Debug Configurations for Tomcat -> Deployment.
-
-![20210510104246](https://user-images.githubusercontent.com/13672781/117701798-81ff8600-b17c-11eb-91e3-76eff6d05831.png)
-
-Note: Don't forget to change the URL in Login class to match your deployed backend
+Note: You need to make sure your login cart runs at [http://localhost:8080/cs122b_project2_login_cart_example_war](http://localhost:8080/cs122b_project2_login_cart_example_war). 
 
 ## About NukeSSLCerts.java
 

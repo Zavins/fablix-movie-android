@@ -1,4 +1,4 @@
-package edu.uci.ics.fabflixmobile.data.model;
+package edu.uci.ics.fablixmobile.data.model;
 
 /**
  * Movie class that captures movie information for movies retrieved from MovieListActivity

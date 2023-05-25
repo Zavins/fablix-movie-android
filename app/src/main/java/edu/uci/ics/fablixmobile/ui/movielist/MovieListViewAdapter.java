@@ -1,7 +1,7 @@
-package edu.uci.ics.fabflixmobile.ui.movielist;
+package edu.uci.ics.fablixmobile.ui.movielist;
 
-import edu.uci.ics.fabflixmobile.R;
-import edu.uci.ics.fabflixmobile.data.model.Movie;
+import edu.uci.ics.fablixmobile.R;
+import edu.uci.ics.fablixmobile.data.model.Movie;
 
 import android.annotation.SuppressLint;
 import android.content.Context;

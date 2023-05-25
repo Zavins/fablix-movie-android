@@ -1,7 +1,7 @@
 <resources>
-    <string name="app_name">Fabflix Mobile</string>
+    <string name="app_name">Fablix Mobile</string>
     <!-- Strings related to login -->
-    <string name="prompt_email">Username</string>
+    <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
     <string name="action_sign_in">LOGIN</string>
     <string name="action_sign_in_short">LOGIN</string>
@@ -9,5 +9,8 @@
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >2 characters</string>
     <string name="login_failed">"Login failed"</string>
-    <string name="fabflix">Fabflix</string>
+    <string name="fablix">Fablix</string>
+    <string name="search">Search</string>
+    <string name="title">Title</string>
+    <string name="recaptcha">Verify ReCaptcha</string>
 </resources>

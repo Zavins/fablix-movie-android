@@ -1,4 +1,4 @@
-package edu.uci.ics.fabflixmobile.data;
+package edu.uci.ics.fablixmobile.data;
 
 import android.content.Context;
 

@@ -4,12 +4,12 @@ plugins {
 }
 
 android {
-    namespace 'edu.uci.ics.fabflixmobile'
+    namespace 'edu.uci.ics.fablixmobile'
     compileSdk 33
 
     defaultConfig {
-        applicationId "edu.uci.ics.fabflixmobile"
-        minSdkVersion 33
+        applicationId "edu.uci.ics.fablixmobile"
+        minSdkVersion 28
         targetSdkVersion 33
         versionCode 1
         versionName "1.0"
@@ -37,5 +37,9 @@ dependencies {
     implementation 'com.google.android.material:material:1.9.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation 'com.android.volley:volley:1.2.1'
-
+    implementation 'com.google.android.gms:play-services-base:18.2.0'
+    implementation 'com.google.android.gms:play-services-basement:18.2.0'
+    implementation 'com.google.android.gms:play-services-safetynet:18.0.1'
+    implementation 'com.google.android.gms:play-services-tasks:18.0.2'
+    implementation 'com.google.code.gson:gson:2.10.1'
 }

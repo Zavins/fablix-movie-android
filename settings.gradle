@@ -10,5 +10,5 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
-rootProject.name = "Fabflix Mobile"
+rootProject.name = "Fablix Mobile"
 include ':app'

@@ -9,7 +9,7 @@ import android.widget.SearchView;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import edu.uci.ics.fablixmobile.databinding.ActivitySearchBinding;
-import edu.uci.ics.fablixmobile.ui.movielist.MovieListActivity;
+import edu.uci.ics.fablixmobile.ui.movieList.MovieListActivity;
 import edu.uci.ics.fablixmobile.utils.MakeGradient;
 
 public class SearchActivity extends AppCompatActivity {

@@ -1,4 +1,4 @@
-package edu.uci.ics.fablixmobile.ui.movielist;
+package edu.uci.ics.fablixmobile.ui.movieList;
 
 import edu.uci.ics.fablixmobile.R;
 import edu.uci.ics.fablixmobile.data.model.Movie;
@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
+import edu.uci.ics.fablixmobile.utils.ArrayHelper;
 
 import java.util.ArrayList;
 
@@ -19,7 +20,10 @@ public class MovieListViewAdapter extends ArrayAdapter<Movie> {
     // View lookup cache
     private static class ViewHolder {
         TextView title;
-        TextView subtitle;
+        TextView year;
+        TextView director;
+        TextView genres;
+        TextView stars;
     }
 
     public MovieListViewAdapter(Context context, ArrayList<Movie> movies) {
@@ -40,7 +44,10 @@ public class MovieListViewAdapter extends ArrayAdapter<Movie> {
             LayoutInflater inflater = LayoutInflater.from(getContext());
             convertView = inflater.inflate(R.layout.movielist_row, parent, false);
             viewHolder.title = convertView.findViewById(R.id.title);
-            viewHolder.subtitle = convertView.findViewById(R.id.subtitle);
+            viewHolder.year = convertView.findViewById(R.id.year);
+            viewHolder.director = convertView.findViewById(R.id.director);
+            viewHolder.genres = convertView.findViewById(R.id.genres);
+            viewHolder.stars = convertView.findViewById(R.id.stars);
             // Cache the viewHolder object inside the fresh view
             convertView.setTag(viewHolder);
         } else {
@@ -50,7 +57,10 @@ public class MovieListViewAdapter extends ArrayAdapter<Movie> {
         // Populate the data from the data object via the viewHolder object
         // into the template view.
         viewHolder.title.setText(movie.getName());
-        viewHolder.subtitle.setText(movie.getYear() + "");
+        viewHolder.year.setText("Year: " + movie.getYear());
+        viewHolder.director.setText("Director: " + movie.getDirector());
+        viewHolder.genres.setText( "Genres: "+ ArrayHelper.toString(movie.getGenres(), 3));
+        viewHolder.stars.setText("Stars: " + ArrayHelper.toString(movie.getStars(), 3));
         // Return the completed view to render on screen
         return convertView;
     }

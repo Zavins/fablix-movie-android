@@ -13,4 +13,5 @@
     <string name="search">Search</string>
     <string name="title">Title</string>
     <string name="recaptcha">Verify ReCaptcha</string>
+    <string name="single_movie">Single Movie</string>
 </resources>

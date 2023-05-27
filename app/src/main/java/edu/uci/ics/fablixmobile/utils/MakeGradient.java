@@ -9,7 +9,7 @@ import android.widget.TextView;
 public class MakeGradient {
     public static void make(TextView text){
         TextPaint paint = text.getPaint();
-        float width = paint.measureText("Search");
+        float width = paint.measureText(text.getText().toString());
         Shader textShader = new LinearGradient(0, 0, width, text.getTextSize(),
                 new int[]{
                         Color.parseColor("#FA8C4E"),

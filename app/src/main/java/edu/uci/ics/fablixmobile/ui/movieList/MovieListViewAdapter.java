@@ -20,6 +20,7 @@ public class MovieListViewAdapter extends ArrayAdapter<Movie> {
     // View lookup cache
     private static class ViewHolder {
         TextView title;
+        TextView rating;
         TextView year;
         TextView director;
         TextView genres;
@@ -44,6 +45,7 @@ public class MovieListViewAdapter extends ArrayAdapter<Movie> {
             LayoutInflater inflater = LayoutInflater.from(getContext());
             convertView = inflater.inflate(R.layout.movielist_row, parent, false);
             viewHolder.title = convertView.findViewById(R.id.title);
+            viewHolder.rating = convertView.findViewById(R.id.rating);
             viewHolder.year = convertView.findViewById(R.id.year);
             viewHolder.director = convertView.findViewById(R.id.director);
             viewHolder.genres = convertView.findViewById(R.id.genres);
@@ -57,10 +59,12 @@ public class MovieListViewAdapter extends ArrayAdapter<Movie> {
         // Populate the data from the data object via the viewHolder object
         // into the template view.
         viewHolder.title.setText(movie.getName());
+        viewHolder.rating.setText("Rating: " + movie.getRating() + "⭐");
         viewHolder.year.setText("Year: " + movie.getYear());
         viewHolder.director.setText("Director: " + movie.getDirector());
         viewHolder.genres.setText( "Genres: "+ ArrayHelper.toString(movie.getGenres(), 3));
         viewHolder.stars.setText("Stars: " + ArrayHelper.toString(movie.getStars(), 3));
+        //TODO: ADD rating
         // Return the completed view to render on screen
         return convertView;
     }

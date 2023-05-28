@@ -17,14 +17,6 @@ public class Movie {
 
 //Show search results: a list view of movies with title,
 // year, director, first 3 genres, first 3 stars (see Movie List Page), sorting is optional.
-    public Movie(String id, String name, short year, String director, ArrayList<String> genres, ArrayList<String> stars) {
-        this.id = id;
-        this.name = name;
-        this.year = year;
-        this.director = director;
-        this.genres = genres;
-        this.stars = stars;
-    }
     public Movie(String id, String name,  double rating, short year, String director, ArrayList<String> genres, ArrayList<String> stars) {
         this.id = id;
         this.name = name;

@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ListView;
+import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
@@ -84,6 +85,7 @@ public class MovieListActivity extends AppCompatActivity {
             singleMovieActivity.putExtra("id", movie.getId());
             startActivity(singleMovieActivity);
         });
+        Toast.makeText(this, "Page " + pageNum, Toast.LENGTH_SHORT).show();
         prevButton.setVisibility(View.VISIBLE);
         nextButton.setVisibility(View.VISIBLE);
         if (pageNum <= 1){
@@ -109,6 +111,7 @@ public class MovieListActivity extends AppCompatActivity {
                     movies.add(new Movie(
                             movieObj.getString("id"),
                             movieObj.getString("title"),
+                            Double.parseDouble(movieObj.getString("rating")),
                             (short) movieObj.getInt("year"),
                             movieObj.getString("director"),
                             ArrayHelper.FromJSON(movieObj.getJSONArray("genres")),

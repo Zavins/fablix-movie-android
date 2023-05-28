@@ -32,5 +32,19 @@
             android:layout_marginStart="24dp"
             android:layout_marginEnd="24dp"
             android:queryHint="Title"/>
+    <ListView
+            android:id="@+id/autocompleteList"
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:divider="@drawable/empty_line_divider"
+            app:layout_constraintTop_toBottomOf="@+id/searchBox"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
+    </ListView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

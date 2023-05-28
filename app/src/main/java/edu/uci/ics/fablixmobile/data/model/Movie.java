@@ -11,8 +11,8 @@ public class Movie {
     private double rating = 0.0;
     private final short year;
     private final String director;
-    private final ArrayList<String> genres;
-    private final ArrayList<String> stars;
+    private ArrayList<String> genres = null;
+    private ArrayList<String> stars = null;
 
 
 //Show search results: a list view of movies with title,
@@ -25,6 +25,13 @@ public class Movie {
         this.director = director;
         this.genres = genres;
         this.stars = stars;
+    }
+
+    public Movie(String id, String name,  short year, String director) {
+        this.id = id;
+        this.name = name;
+        this.year = year;
+        this.director = director;
     }
 
     public String getId(){return id;}

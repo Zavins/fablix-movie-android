@@ -52,7 +52,7 @@ public class MovieListActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         params = new HashMap<>();
-        params.put("title", "%" + title + "%");
+        params.put("title", title);
         params.put("page", pageNum+"");
         getMovies(params);
 
@@ -135,7 +135,7 @@ public class MovieListActivity extends AppCompatActivity {
     private String prepareURL(String baseURL, Map<String, String> params) {
         String usePrevious = params.getOrDefault("usePrevious", "0");
         String count = params.getOrDefault("count", "10");
-        String title = params.getOrDefault("title", "%");
+        String title = params.getOrDefault("title", "");
         String year = params.getOrDefault("year", "");
         String director = params.getOrDefault("director", "");
         String starName = params.getOrDefault("starName", "");
